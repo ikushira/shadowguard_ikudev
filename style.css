@@ -1,0 +1,431 @@
+/* Fondo negro para todo el sitio */
+body {
+  background: #000 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #00ffe7; /* cian neón */
+}
+
+a, .nav-links a {
+  color: #39ff14 !important;
+  text-decoration: none;
+}
+
+a:hover, .nav-links a:hover {
+  color: #fff !important;
+  text-decoration: underline;
+}
+
+.header {
+  background: #10131a;
+  color: #f1f1f1;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 50px;
+  filter: drop-shadow(0 0 6px #39ff14);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin-left: 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: radial-gradient(#0b0f12, #000);
+}
+
+.titulo-neon {
+  color: #39ff14 !important;
+  font-size: 4rem;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 40px #0f0,
+    0 0 80px #0f0;
+}
+
+.subtitulo {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #ccc;
+}
+
+.btn-descargar, .btn-wsp {
+  background: #cf1111;
+  color: #181c24;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.btn-descargar:hover, .btn-wsp:hover {
+  background: #00bfae;
+  color: #fff;
+}
+
+.beneficios {
+  padding: 40px 20px;
+}
+
+.beneficios ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.beneficios li {
+  margin-bottom: 10px;
+}
+
+.contacto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.tarjeta-contacto, .seccion-destacada {
+  background: #232a36;
+  color: #f1f1f1;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px #0004;
+}
+
+.contactos-flex {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 32px 0;
+}
+
+.tarjeta-contacto {
+  flex: 1 1 320px;
+  max-width: 400px;
+  min-width: 260px;
+}
+
+.android-tarjetas-flex {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 32px 0;
+}
+
+.android-tarjetas-flex .tarjeta-contacto {
+  flex: 1 1 280px;
+  max-width: 340px;
+  min-width: 220px;
+}
+
+/* --- TARJETAS UNIFICADAS --- */
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  width: 390px;
+  height: 164px;
+  perspective: 1000px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front, .card-back {
+  background: #181f1b !important;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px #39ff1460;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  padding: 18px 18px;
+  color: #39ff14 !important;
+  text-align: center;
+  word-break: break-word;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 40px #0f0;
+}
+
+.card-front h3, .card-front strong {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #39ff14 !important;
+  word-break: break-word;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 40px #0f0;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card-container:hover .card,
+.card-container:focus-within .card {
+  transform: rotateY(180deg);
+}
+
+/* --- CONTENEDORES FLEX PARA TARJETAS --- */
+.android-tarjetas-flex,
+.androidandroid-tarjetas-flex,
+.testimonios-flex,
+.contactos-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 0;
+  width: 100%;
+}
+
+/* Responsive para tarjetas */
+@media (max-width: 900px) {
+  .card-container {
+    width: 98vw;
+    max-width: 390px;
+    min-width: 220px;
+    height: 164px;
+  }
+  .android-tarjetas-flex,
+  .androidandroid-tarjetas-flex,
+  .testimonios-flex,
+  .contactos-flex {
+    gap: 16px;
+  }
+}
+/* --- FIN TARJETAS UNIFICADAS --- */
+
+.footer {
+  background: #10131a;
+  color: #aaa;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 40px;
+}
+
+.mapa iframe {
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  height: 250px;
+}
+
+/* Efecto neón verde para todos los textos */
+body, h1, h2, h3, h4, h5, h6, p, a, li, span, label, input, button, .titulo-neon, .subtitulo, .card-front, .card-back, .tarjeta-testimonio, .tarjeta-contacto, .seccion-destacada {
+  color: #39ff14 !important;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 40px #0f0;
+}
+
+/* Fondo para todas las tarjetas y botones */
+.tarjeta-contacto,
+.seccion-destacada,
+.card-front,
+.card-back,
+.btn-descargar,
+.btn-wsp,
+.tarjeta-testimonio {
+  background: #181f1b !important;
+}
+
+/* Si quieres que los inputs y botones tengan texto neón pero fondo oscuro: */
+input, textarea, select, button, .btn-descargar, .btn-wsp {
+  background: #181f1b !important;
+  border: 1px solid #39ff14;
+  color: #39ff14 !important;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14;
+}
+
+/* Centrar horizontalmente las tarjetas de la sección testimonios */
+.testimonios-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 32px 0;
+}
+
+/* Centrar el contenedor de tarjetas dentro de testimonios */
+#lista-testimonios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.formulario-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.formulario-container {
+  background: #181f1b;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px #39ff1460;
+  padding: 32px 28px;
+  width: 390px;
+  max-width: 98vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formulario-titulo {
+  color: #39ff14;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 40px #0f0;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.formulario-container label {
+  color: #39ff14;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  width: 100%;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14;
+}
+
+.formulario-container input,
+.formulario-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #39ff14;
+  background: #10131a;
+  color: #39ff14;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  text-shadow:
+    0 0 5px #39ff14;
+}
+
+.formulario-container input:focus,
+.formulario-container textarea:focus {
+  border-color: #39ff14;
+  box-shadow: 0 0 8px #39ff14;
+}
+
+.btn-enviar {
+  background: #181f1b;
+  color: #39ff14;
+  border: 1px solid #39ff14;
+  border-radius: 6px;
+  padding: 10px 32px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 8px;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-enviar:hover {
+  background: #39ff14;
+  color: #181f1b;
+  text-shadow: none;
+}
+
+/* Agrega esto a tu style.css */
+.popup-mensaje {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #181f1b;
+  color: #39ff14;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px #39ff1460;
+  padding: 32px 40px;
+  min-width: 220px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-size: 1.3rem;
+  text-align: center;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 40px #0f0;
+  border: 2px solid #39ff14;
+}
+
+.popup-success {
+  border-color: #39ff14;
+}
+
+.popup-error {
+  border-color: #ff3939;
+  color: #ff3939;
+  text-shadow:
+    0 0 5px #ff3939,
+    0 0 10px #ff3939,
+    0 0 20px #ff3939;
+}
