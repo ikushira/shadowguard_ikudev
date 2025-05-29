@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonios - ShadowGuard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <nav class="navbar">
+      <img src="images/logo.png" alt="Logo ShadowGuard" class="logo">
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="seguridad.html">Seguridad</a></li>
+        <li><a href="android.html">Android</a></li>
+        <li><a href="testimonios.html">Testimonios</a></li>
+        <li><a href="planes.html">Planes</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="soporte.html">Soporte</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main style="padding: 40px 20px;">
+    <h1 class="titulo-neon">Testimonios</h1>
+    <p class="subtitulo">Opiniones reales de usuarios satisfechos con ShadowGuard:</p>
+
+    <section class="testimonios-flex">
+      <div id="lista-testimonios"></div>
+    </section>
+  </main>
+
+  <script>
+  // Variables y array de testimonios
+  const testimonios = [
+    { nombre: "Ana", mensaje: "Excelente servicio, ahora navego segura en cualquier red." },
+    { nombre: "Luis", mensaje: "La app es fácil de usar y la conexión es muy rápida." },
+    { nombre: "María", mensaje: "Me ayudaron por WhatsApp en minutos, ¡gran soporte!" },
+    { nombre: "Carlos", mensaje: "Puedo acceder a contenido global sin problemas." },
+    { nombre: "Valeria", mensaje: "La mejor VPN que he probado, la recomiendo totalmente." },
+    { nombre: "Jorge", mensaje: "Ideal para proteger mi información en el trabajo remoto." }
+  ];
+
+  // Función para mostrar los testimonios en el DOM
+  function mostrarTestimonios() {
+    const contenedor = document.getElementById("lista-testimonios");
+    contenedor.innerHTML = "";
+    for (let t of testimonios) {
+      let cardContainer = document.createElement("div");
+      cardContainer.className = "card-container";
+
+      let card = document.createElement("div");
+      card.className = "card";
+
+      let cardFront = document.createElement("div");
+      cardFront.className = "card-front";
+      cardFront.innerHTML = `<strong>${t.nombre}</strong>`;
+
+      let cardBack = document.createElement("div");
+      cardBack.className = "card-back";
+      cardBack.innerHTML = `<span>${t.mensaje}</span>`;
+
+      card.appendChild(cardFront);
+      card.appendChild(cardBack);
+      cardContainer.appendChild(card);
+      contenedor.appendChild(cardContainer);
+    }
+  }
+
+  // Ejecutar al cargar la página
+  document.addEventListener("DOMContentLoaded", mostrarTestimonios);
+  </script>
+
+  <footer class="footer">
+    <p>Derechos reservados © IkushiraDev</p>
+  </footer>
+
+</body>
+</html>
