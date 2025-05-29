@@ -65,19 +65,28 @@
           </ul> 
         
         </section> 
-        
+        <section class="seccion-destacada"> 
+          <h2>¿Quiénes usan ShadowGuard?</h2> 
+          <p>Millones de usuarios en Latinoamérica confían en nosotros para proteger su identidad y navegar sin censura. Únete a la comunidad y navega libremente.</p> 
+        </section>
         <section class="seccion-destacada"> 
           <h2>Conéctate en segundos</h2> 
           <p>Solo descarga nuestra app, presiona conectar, ¡y listo! Navega seguro incluso en redes Wi-Fi públicas.</p> 
           <a class="btn-descargar" href="#">Descargar App</a> 
         </section> 
         
-        <section class="seccion-destacada"> 
-          <h2>¿Quiénes usan ShadowGuard?</h2> 
-          <p>Millones de usuarios en Latinoamérica confían en nosotros para proteger su identidad y navegar sin censura. Únete a la comunidad y navega libremente.</p> 
-        </section>
-
-
+        <!-- Carrusel de imágenes -->
+<div class="carrusel-container">
+  <div class="carrusel-imagen">
+    <img id="carrusel-img" src="images/imagen1.jpg" alt="Imagen Carrusel">
+  </div>
+  <div class="carrusel-controles">
+    <button id="carrusel-prev" title="Atrás">⏪</button>
+    <button id="carrusel-pause" title="Pausa">⏸️</button>
+    <button id="carrusel-next" title="Adelante">⏩</button>
+  </div>
+  <div id="carrusel-label">imagen1</div>
+</div>
 
 <!-- SECCIÓN DE FORMULARIO UNIFICADO -->
 <section class="formulario-flex">
@@ -112,37 +121,7 @@
     <p>Derechos reservados © IkushiraDev</p>
   </footer>
 
-  <!-- Agrega este script antes del cierre de </body> para validar solo números en teléfono -->
-<script>
-  // Solo números en teléfono
-  document.getElementById('telefono').addEventListener('input', function (e) {
-    this.value = this.value.replace(/[^0-9]/g, '');
-  });
-
-  // Validación y popup
-  document.getElementById('contacto-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const nombre = document.getElementById('nombre').value.trim();
-    const correo = document.getElementById('correo').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
-    const mensaje = document.getElementById('mensaje').value.trim();
-    const popup = document.getElementById('popup-mensaje');
-    const popupTexto = document.getElementById('popup-texto');
-
-    if (nombre && correo && telefono && mensaje) {
-      popupTexto.textContent = "Mensaje Enviado";
-      popup.classList.remove('popup-error');
-      popup.classList.add('popup-success');
-      this.reset();
-    } else {
-      popupTexto.textContent = "Datos Incompletos!";
-      popup.classList.remove('popup-success');
-      popup.classList.add('popup-error');
-    }
-    popup.style.display = "flex";
-    setTimeout(() => { popup.style.display = "none"; }, 2200);
-  });
-</script>
+  <!-- Vincula el archivo JS externo -->
+  <script src="javascript.js"></script>
 </body>
-
 </html>
