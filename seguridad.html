@@ -62,6 +62,25 @@
   <footer class="footer">
     <p>Derechos reservados © IkushiraDev</p>
   </footer>
+  <!-- ...código existente... -->
+<script>
+  // Navbar dinámico: cambia el enlace activo al hacer clic
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const current = window.location.pathname.split('/').pop();
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === current || (current === '' && link.getAttribute('href').includes('index'))) {
+          link.classList.add('active');
+        }
+        link.addEventListener('click', function(e) {
+          // Si es un enlace interno, solo cambia la clase
+          if (this.hostname === window.location.hostname) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+          }
+        });
+      });
+</script>
+<!-- ...código existente... -->
 </body>
 
 

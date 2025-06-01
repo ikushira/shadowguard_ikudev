@@ -25,7 +25,7 @@
 
   <main style="padding: 40px 20px;">
     <h1>Android</h1>
-    <p>Contenido de muestra para la sección de android.</p>
+    <p>Disfruta de la mejor protección VPN en tu dispositivo Android con ShadowGuard.</p>
 
     <section class="android-tarjetas-flex">
       <div class="card-container">
@@ -74,6 +74,23 @@
   <footer class="footer">
     <p>Derechos reservados © IkushiraDev</p>
   </footer>
+<script>
+ // Navbar dinámico: cambia el enlace activo al hacer clic
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const current = window.location.pathname.split('/').pop();
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === current || (current === '' && link.getAttribute('href').includes('index'))) {
+          link.classList.add('active');
+        }
+        link.addEventListener('click', function(e) {
+          // Si es un enlace interno, solo cambia la clase
+          if (this.hostname === window.location.hostname) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+          }
+        });
+      });
+</script>
 
 </body>
 </html>

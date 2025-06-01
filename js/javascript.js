@@ -64,55 +64,64 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Carrusel de imágenes
   const imagenes = [
-    { src: "images/imagen1.jpg", label: "imagen1" },
-    { src: "images/imagen2.jpg", label: "imagen2" },
-    { src: "images/imagen3.jpg", label: "imagen3" },
-    { src: "images/imagen4.jpg", label: "imagen4" },
-    { src: "images/imagen5.jpg", label: "imagen5" },
-    { src: "images/imagen6.jpg", label: "imagen6" },
-    { src: "images/imagen7.jpg", label: "imagen7" },
-    { src: "images/imagen8.jpg", label: "imagen8" },
+    'images/imagen1.jpg',
+    'images/imagen2.jpg',
+    'images/imagen3.jpg',
+    'images/imagen4.jpg',
+    'images/imagen5.jpg',
+    'images/imagen6.jpg',
+    'images/imagen7.jpg',
+    'images/imagen8.jpg'
   ];
   let indice = 0;
   let intervalo = null;
   let pausado = false;
 
+  const img = document.getElementById('carrusel-img');
+  const label = document.getElementById('carrusel-label');
+  const btnPrev = document.getElementById('carrusel-prev');
+  const btnNext = document.getElementById('carrusel-next');
+  const btnPause = document.getElementById('carrusel-pause');
+
   function mostrarImagen(i) {
-    const img = document.getElementById("carrusel-img");
-    const label = document.getElementById("carrusel-label");
-    img.src = imagenes[i].src;
-    label.textContent = imagenes[i].label;
+    indice = (i + imagenes.length) % imagenes.length;
+    img.src = imagenes[indice];
+    label.textContent = `Imagen ${indice + 1} de ${imagenes.length}`;
   }
 
-  function siguienteImagen() {
-    indice = (indice + 1) % imagenes.length;
-    mostrarImagen(indice);
+  function siguiente() {
+    mostrarImagen(indice + 1);
   }
 
-  function anteriorImagen() {
-    indice = (indice - 1 + imagenes.length) % imagenes.length;
-    mostrarImagen(indice);
+  function anterior() {
+    mostrarImagen(indice - 1);
   }
 
-  function pausarCarrusel() {
-    pausado = !pausado;
-    if (pausado) {
-      clearInterval(intervalo);
-    } else {
-      iniciarCarrusel();
-    }
-  }
-
-  function iniciarCarrusel() {
+  function autoPlay() {
+    if (intervalo) clearInterval(intervalo);
     intervalo = setInterval(() => {
-      if (!pausado) siguienteImagen();
-    }, 4000);
+      if (!pausado) siguiente();
+    }, 3500);
   }
 
-  document.getElementById("carrusel-prev").onclick = anteriorImagen;
-  document.getElementById("carrusel-next").onclick = siguienteImagen;
-  document.getElementById("carrusel-pause").onclick = pausarCarrusel;
+  btnPrev.addEventListener('click', () => {
+    anterior();
+    pausado = true;
+    btnPause.textContent = '▶️';
+  });
+
+  btnNext.addEventListener('click', () => {
+    siguiente();
+    pausado = true;
+    btnPause.textContent = '▶️';
+  });
+
+  btnPause.addEventListener('click', () => {
+    pausado = !pausado;
+    btnPause.textContent = pausado ? '▶️' : '⏸️';
+    if (!pausado) autoPlay();
+  });
 
   mostrarImagen(indice);
-  iniciarCarrusel();
+  autoPlay();
 });

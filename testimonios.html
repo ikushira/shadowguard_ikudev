@@ -19,9 +19,32 @@
         <li><a href="planes.html">Planes</a></li>
         <li><a href="contacto.html">Contacto</a></li>
         <li><a href="soporte.html">Soporte</a></li>
+        <li><a href="#" id="btn-agregar-comentario">Agregar comentario</a></li>
       </ul>
     </nav>
   </header>
+
+  <!-- Formulario flotante, fuera del main -->
+  <div id="form-container" class="form-neon" style="display:none;position:fixed;top:80px;left:0;right:0;z-index:1000;max-width:400px;margin:auto;">
+    <!-- Sección 1: Registro -->
+    <form id="form-registro" autocomplete="off">
+      <label for="nombre" class="label-neon">Nombre y Apellido</label>
+      <input type="text" id="nombre" required placeholder="Tu nombre completo" class="input-neon">
+      <label for="correo" class="label-neon">Correo electrónico</label>
+      <input type="email" id="correo" required placeholder="Tu correo electrónico" class="input-neon">
+      <label for="usuario" class="label-neon">Usuario</label>
+      <input type="text" id="usuario" required placeholder="Usuario" class="input-neon">
+      <label for="password" class="label-neon">Contraseña</label>
+      <input type="password" id="password" required placeholder="Contraseña" class="input-neon">
+      <button type="submit" class="btn-neon" style="width:100%;margin-top:10px;">Guardar</button>
+    </form>
+    <!-- Sección 2: Testimonio -->
+    <form id="form-testimonio" style="display:none;">
+      <label for="mensaje-testimonio" class="label-neon">Testimonio</label>
+      <textarea id="mensaje-testimonio" required placeholder="Escribe tu testimonio..." class="input-neon" style="height:80px;"></textarea>
+      <button type="submit" class="btn-neon" style="width:100%;margin-top:10px;">Enviar</button>
+    </form>
+  </div>
 
   <main style="padding: 40px 20px;">
     <h1 class="titulo-neon">Testimonios</h1>
@@ -32,50 +55,26 @@
     </section>
   </main>
 
-  <script>
-  // Variables y array de testimonios
-  const testimonios = [
-    { nombre: "Ana", mensaje: "Excelente servicio, ahora navego segura en cualquier red." },
-    { nombre: "Luis", mensaje: "La app es fácil de usar y la conexión es muy rápida." },
-    { nombre: "María", mensaje: "Me ayudaron por WhatsApp en minutos, ¡gran soporte!" },
-    { nombre: "Carlos", mensaje: "Puedo acceder a contenido global sin problemas." },
-    { nombre: "Valeria", mensaje: "La mejor VPN que he probado, la recomiendo totalmente." },
-    { nombre: "Jorge", mensaje: "Ideal para proteger mi información en el trabajo remoto." }
-  ];
-
-  // Función para mostrar los testimonios en el DOM
-  function mostrarTestimonios() {
-    const contenedor = document.getElementById("lista-testimonios");
-    contenedor.innerHTML = "";
-    for (let t of testimonios) {
-      let cardContainer = document.createElement("div");
-      cardContainer.className = "card-container";
-
-      let card = document.createElement("div");
-      card.className = "card";
-
-      let cardFront = document.createElement("div");
-      cardFront.className = "card-front";
-      cardFront.innerHTML = `<strong>${t.nombre}</strong>`;
-
-      let cardBack = document.createElement("div");
-      cardBack.className = "card-back";
-      cardBack.innerHTML = `<span>${t.mensaje}</span>`;
-
-      card.appendChild(cardFront);
-      card.appendChild(cardBack);
-      cardContainer.appendChild(card);
-      contenedor.appendChild(cardContainer);
-    }
-  }
-
-  // Ejecutar al cargar la página
-  document.addEventListener("DOMContentLoaded", mostrarTestimonios);
-  </script>
-
   <footer class="footer">
     <p>Derechos reservados © IkushiraDev</p>
   </footer>
 
+  <!-- Script de testimonios unificado -->
+  <script src="js/testimonios.js"></script>
+  <!-- Navbar activo -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.nav-links a');
+      const current = window.location.pathname.split('/').pop().split('?')[0];
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === current || (current === '' && href.includes('index'))) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
