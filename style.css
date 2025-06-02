@@ -799,3 +799,156 @@ input, textarea, select, button, .btn-descargar, .btn-wsp {
 .sparkle-btn:hover:before {
   opacity: 1;
 }
+
+/* Canvas del cursor interactivo */
+#cursor-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  display: block;
+  background: transparent;
+}
+
+/* ...otros estilos... */
+
+/* Contenedor de planes */
+.planes-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* Tarjetas de planes */
+.plan-card {
+  background: #181c24;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 30px 25px;
+  width: 300px;
+  text-align: center;
+}
+
+/* Colores por plan */
+.plan-basic h2, .plan-basic .plan-precio, .plan-basic .plan-lista {
+  color: #39ff14;
+  text-shadow: 0 0 8px #39ff14;
+}
+.plan-advanced h2, .plan-advanced .plan-precio, .plan-advanced .plan-lista {
+  color: #1bbf72;
+}
+.plan-business h2, .plan-business .plan-precio, .plan-business .plan-lista {
+  color: #ff7e29;
+}
+
+/* Precios */
+.plan-precio {
+  font-size: 2em;
+  margin: 15px 0;
+}
+.plan-precio-mes {
+  font-size: 0.5em;
+}
+
+/* Lista de características */
+.plan-lista {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+/* Icono de verificación */
+.check-icon::before {
+  content: "✔";
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+/* Botones */
+.choose-btn {
+  background: #181c24;
+  border-radius: 5px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 2px solid;
+  transition: background 0.2s, color 0.2s;
+}
+.plan-basic .choose-btn {
+  color: #39ff14;
+  border-color: #39ff14;
+}
+.plan-advanced .choose-btn {
+  color: #1bbf72;
+  border-color: #1bbf72;
+}
+.plan-business .choose-btn {
+  color: #ff7e29;
+  border-color: #ff7e29;
+}
+.choose-btn:hover {
+  background: #23272f;
+}
+
+/* Nota de precios */
+.planes-nota {
+  text-align: center;
+  margin-top: 40px;
+  color: #888;
+}
+
+/* Accesibilidad: enfoque visible */
+.choose-btn:focus, .nav-links a:focus {
+  outline: 2px solid #39ff14;
+  outline-offset: 2px;
+}
+/* Canvas del cursor */
+.cursor-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Saludo personalizado */
+.saludo-cibernetico {
+  text-align: center;
+  margin: 30px 0 10px 0;
+}
+.saludo-titulo {
+  font-size: 2.5rem;
+  margin: 0;
+}
+.saludo-subtitulo {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
+/* Main padding */
+.main-contenido {
+  padding: 40px 20px;
+}
+
+/* Carrusel */
+.carrusel {
+  text-align: center;
+  margin: 40px 0;
+}
+.carrusel-img {
+  max-width: 90vw;
+  max-height: 320px;
+  border-radius: 12px;
+  box-shadow: 0 0 24px #39ff14;
+}
+.carrusel-controles {
+  margin: 12px 0;
+}
+.carrusel-label {
+  color: #39ff14;
+  font-weight: bold;
+}

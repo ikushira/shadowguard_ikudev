@@ -1,5 +1,3 @@
-// ...código existente...
-
 // 1. Variables y funciones
 let testimonios = [
   { nombre: "Ana", mensaje: "Excelente servicio y seguridad." },
@@ -125,3 +123,99 @@ document.addEventListener('DOMContentLoaded', function () {
   mostrarImagen(indice);
   autoPlay();
 });
+
+// Redirigir a contacto al hacer click en cualquier botón de elegir plan
+document.querySelectorAll('.choose-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    window.location.href = "contacto.html";
+  });
+});
+
+// Efecto interactivo de cursor con canvas (global para todas las páginas)
+(function() {
+  let mouseMoved = false;
+  const pointer = {
+    x: 0.5 * window.innerWidth,
+    y: 0.5 * window.innerHeight,
+  };
+  const params = {
+    pointsNumber: 40,
+    widthFactor: 0.3,
+    mouseThreshold: 0.6,
+    spring: 0.4,
+    friction: 0.5,
+  };
+  let points = [];
+
+  function initPoints() {
+    points = [];
+    for (let i = 0; i < params.pointsNumber; i++) {
+      points.push({
+        x: pointer.x,
+        y: pointer.y,
+        vx: 0,
+        vy: 0,
+      });
+    }
+  }
+
+  function updateMousePosition(e) {
+    pointer.x = e.clientX;
+    pointer.y = e.clientY;
+    mouseMoved = true;
+  }
+
+  function setupCanvas() {
+    const canvas = document.getElementById('cursor-canvas');
+    if (!canvas) return;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    initPoints();
+  }
+
+  function update() {
+    const canvas = document.getElementById('cursor-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Primer punto sigue al mouse
+    points[0].vx += (pointer.x - points[0].x) * params.spring;
+    points[0].vy += (pointer.y - points[0].y) * params.spring;
+    points[0].vx *= params.friction;
+    points[0].vy *= params.friction;
+    points[0].x += points[0].vx;
+    points[0].y += points[0].vy;
+
+    // Los demás puntos siguen al anterior
+    for (let i = 1; i < points.length; i++) {
+      points[i].vx += (points[i - 1].x - points[i].x) * params.spring;
+      points[i].vy += (points[i - 1].y - points[i].y) * params.spring;
+      points[i].vx *= params.friction;
+      points[i].vy *= params.friction;
+      points[i].x += points[i].vx;
+      points[i].y += points[i].vy;
+    }
+
+    // Dibujar líneas de colores
+    for (let i = 1; i < points.length; i++) {
+      ctx.strokeStyle = `hsl(${(i * 360 / points.length)}, 100%, 60%)`;
+      ctx.lineWidth = 2 + Math.sin(i + Date.now() * 0.002) * 1.5;
+      ctx.beginPath();
+      ctx.moveTo(points[i - 1].x, points[i - 1].y);
+      ctx.lineTo(points[i].x, points[i].y);
+      ctx.stroke();
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener('mousemove', updateMousePosition);
+  window.addEventListener('resize', setupCanvas);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    setupCanvas();
+    update();
+  });
+})();
+
