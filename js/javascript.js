@@ -219,3 +219,21 @@ document.querySelectorAll('.choose-btn').forEach(btn => {
   });
 })();
 
+// Overlay de publicidad
+document.addEventListener("DOMContentLoaded", function() {
+  const cerrarBtn = document.getElementById("cerrarBtnPublicidad");
+  const overlay = document.getElementById("overlay-publicidad");
+  if (overlay && cerrarBtn) {
+    // Bloquea el scroll mientras el overlay está visible
+    document.body.style.overflow = "hidden";
+    cerrarBtn.addEventListener("click", function() {
+      overlay.style.display = "none";
+      document.body.style.overflow = "auto";
+    });
+    setTimeout(function() {
+      overlay.style.display = "none";
+      document.body.style.overflow = "auto";
+    }, 5000);
+  }
+});
+

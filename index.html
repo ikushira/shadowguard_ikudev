@@ -8,10 +8,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Efecto interactivo de cursor con canvas -->
+  <!-- 1 -->
+  <div id="overlay-publicidad">
+    <button id="cerrarBtnPublicidad">Cerrar</button>
+    <img src="images/publicidad.jpg" alt="Publicidad" id="publicidadImg">
+  </div>
+  <!-- 2 -->
   <canvas id="cursor-canvas" class="cursor-canvas"></canvas>
 
-  <!-- ENCABEZADO -->
+  <!-- 3 -->
   <header class="header">
     <nav class="navbar" aria-label="Navegación principal">
       <img src="images/logo.png" alt="Logo ShadowGuard" class="logo">
@@ -27,7 +32,7 @@
     </nav>
   </header>
 
-  <!-- Saludo personalizado centrado debajo de navbar -->
+  <!-- 4 -->
   <div id="saludo-cibernetico" class="titulo-neon saludo-cibernetico"></div>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -49,7 +54,7 @@
       `;
       saludo.style.display = 'block';
 
-      // Navbar dinámico: cambia el enlace activo al hacer clic
+      
       const navLinks = document.querySelectorAll('.nav-links a');
       const current = window.location.pathname.split('/').pop();
       navLinks.forEach(link => {
@@ -57,7 +62,7 @@
           link.classList.add('active');
         }
         link.addEventListener('click', function(e) {
-          // Si es un enlace interno, solo cambia la clase
+          
           if (this.hostname === window.location.hostname) {
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');
@@ -67,7 +72,7 @@
     });
   </script>
 
-  <!-- SECCIÓN PRINCIPAL (HERO) -->
+  <!-- 5 -->
   <section class="hero">
     <img src="images/logo.png" alt="Logo ShadowGuard" class="logo-hero" />
     <h1 class="titulo-neon">ShadowGuard</h1>
@@ -107,7 +112,7 @@
       <span class="star-6"></span>
     </a>
 
-    <!-- Carrusel de imágenes -->
+    <!-- 6 -->
     <div id="carrusel" class="carrusel">
       <img id="carrusel-img" src="images/imagen1.jpg" alt="Carrusel" class="carrusel-img">
       <div class="carrusel-controles">
@@ -118,7 +123,7 @@
       <div id="carrusel-label" class="carrusel-label" aria-live="polite"></div>
     </div>
     <script>
-      // Carrusel de imágenes
+      
       const imagenes = [
         'images/imagen1.jpg',
         'images/imagen2.jpg',
@@ -128,7 +133,7 @@
         'images/imagen6.jpg',
         'images/imagen7.jpg',
         'images/imagen8.jpg',
-        // Agrega más rutas si tienes más imágenes
+        
       ];
       let indice = 0;
       let intervalo = null;
@@ -184,12 +189,12 @@
     </script>
   </main>
 
-  <!-- PIE DE PÁGINA -->
+  <!-- 7 -->
   <footer class="footer">
     <p>Derechos reservados © IkushiraDev</p>
   </footer>
 
-  <!-- Vincula el archivo JS externo -->
+  <!-- 8 -->
   <script src="js/javascript.js"></script>
   <script src="js/cookie.js"></script>
 </body>

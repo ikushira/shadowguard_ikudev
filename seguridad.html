@@ -46,7 +46,7 @@
       </div>
     </section>
 
-    <!-- Ejemplo para una tarjeta -->
+    
     <div class="card-container">
       <div class="card">
         <div class="card-front">
@@ -62,10 +62,10 @@
   <footer class="footer">
     <p>Derechos reservados © IkushiraDev</p>
   </footer>
-  <!-- ...código existente... -->
+
 <canvas id="cursor-canvas" style="position:fixed;top:0;left:0;pointer-events:none;z-index:9999;"></canvas>
 <script>
-  // Navbar dinámico: cambia el enlace activo al hacer clic
+  
       const navLinks = document.querySelectorAll('.nav-links a');
       const current = window.location.pathname.split('/').pop();
       navLinks.forEach(link => {
@@ -73,7 +73,7 @@
           link.classList.add('active');
         }
         link.addEventListener('click', function(e) {
-          // Si es un enlace interno, solo cambia la clase
+          
           if (this.hostname === window.location.hostname) {
             navLinks.forEach(l => l.classList.remove('active'));
             this.classList.add('active');

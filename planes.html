@@ -68,7 +68,7 @@
   </footer>
   <canvas id="cursor-canvas" style="position:fixed;top:0;left:0;pointer-events:none;z-index:9999;"></canvas>
 <script>
-  // Navbar dinámico: cambia el enlace activo al cargar la página
+  
   const navLinks = document.querySelectorAll('.nav-links a');
   const current = window.location.pathname.split('/').pop();
   navLinks.forEach(link => {
@@ -83,7 +83,7 @@
     });
   });
 
-  // Redirigir a contacto con el plan seleccionado
+  
   document.querySelectorAll('.choose-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       const plan = this.getAttribute('data-plan');

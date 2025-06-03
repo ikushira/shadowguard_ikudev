@@ -23,10 +23,10 @@
     </nav>
   </header>
 
-  <!-- Formulario flotante, fuera del main -->
+  
   <div id="form-container" class="form-neon" style="display:none;position:fixed;top:80px;left:0;right:0;z-index:10001;max-width:400px;margin:auto;" role="dialog" aria-modal="true" aria-labelledby="form-title">
     <button id="btn-cerrar-form" aria-label="Cerrar formulario" type="button" style="position:absolute;top:10px;right:10px;background:none;border:none;font-size:1.5em;cursor:pointer;">&times;</button>
-    <!-- Sección 1: Registro -->
+    
     <form id="form-registro" autocomplete="off" novalidate action="#">
       <h2 id="form-title" style="margin-bottom:10px;">Registro</h2>
       <label for="nombre" class="label-neon">Nombre y Apellido</label>
@@ -39,7 +39,7 @@
       <input type="password" id="password" name="password" required placeholder="Contraseña" class="input-neon" autocomplete="new-password">
       <button type="submit" class="btn-neon" style="width:100%;margin-top:10px;">Guardar</button>
     </form>
-    <!-- Sección 2: Testimonio -->
+    
     <form id="form-testimonio" style="display:none;" novalidate action="#">
       <h2 style="margin-bottom:10px;">Testimonio</h2>
       <label for="mensaje-testimonio" class="label-neon">Testimonio</label>
@@ -55,7 +55,7 @@
     <section class="testimonios-flex" aria-live="polite">
       <div id="lista-testimonios"></div>
     </section>
-    <!-- Botón centrado debajo de las tarjetas -->
+    
     <div style="display:flex;justify-content:center;margin:40px 0 0 0;">
       <button id="btn-agregar-comentario" class="btn-neon" type="button" aria-label="Agregar comentario">Agregar comentario</button>
     </div>
@@ -65,12 +65,12 @@
     <p>Derechos reservados © IkushiraDev</p>
   </footer>
 
-  <!-- Script de testimonios unificado -->
+  
   <script src="js/testimonios.js"></script>
-  <!-- Navbar activo y mejoras de accesibilidad -->
+  
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Navbar activo
+      
       const navLinks = document.querySelectorAll('.nav-links a');
       const current = window.location.pathname.split('/').pop().split('?')[0];
       navLinks.forEach(link => {
@@ -84,17 +84,17 @@
         }
       });
 
-      // Cerrar formulario flotante
+      
       const formContainer = document.getElementById('form-container');
       const btnCerrarForm = document.getElementById('btn-cerrar-form');
       if (btnCerrarForm) {
         btnCerrarForm.addEventListener('click', function() {
           formContainer.style.display = 'none';
-          // Devolver el foco al botón de agregar comentario
+          
           document.getElementById('btn-agregar-comentario').focus();
         });
       }
-      // Mejor accesibilidad: cerrar con Escape
+      
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && formContainer.style.display === 'block') {
           formContainer.style.display = 'none';
@@ -102,12 +102,12 @@
         }
       });
 
-      // Abrir formulario al hacer clic en "Agregar comentario"
+      
       const btnAgregarComentario = document.getElementById('btn-agregar-comentario');
       if (btnAgregarComentario) {
         btnAgregarComentario.addEventListener('click', function() {
           formContainer.style.display = 'block';
-          // Enfocar el primer campo del formulario de registro
+          
           document.getElementById('nombre').focus();
         });
       }
