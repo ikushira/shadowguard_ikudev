@@ -453,22 +453,12 @@ a:hover, .nav-links a:hover {
 }
 .carrusel-imagen {
   width: 100%;
-  max-width: 480px;
-  height: 320px;
-  border: 4px solid #888;
-  border-radius: 12px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #222;
-  margin-bottom: 12px;
-}
-.carrusel-imagen img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
   object-fit: contain;
-  background: #222;
 }
 .carrusel-controles button {
   font-size: 1.2rem;
