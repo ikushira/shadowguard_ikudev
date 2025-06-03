@@ -542,6 +542,38 @@ input, textarea, select, button, .btn-descargar, .btn-wsp {
   color: #39ff14 !important;
   text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
 }
+@media (max-width: 1024px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 8px;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px 16px;
+    padding: 0;
+    margin: 0;
+  }
+  .nav-links li {
+    margin: 0 4px 4px 0;
+  }
+  .nav-links a {
+    font-size: 0.95rem;
+    padding: 6px 10px;
+    min-width: 80px;
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 5px 8px;
+  }
+}
+
 @media (max-width: 900px) {
   .card-container {
     width: 98vw;
@@ -655,6 +687,23 @@ input, textarea, select, button, .btn-descargar, .btn-wsp {
     margin-top: 20px;
   }
 }
+
+.logo-hero {
+  display: block;
+  margin: 0 auto 18px auto;
+  width: 220px;
+  max-width: 80vw;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .logo-hero {
+    width: 120px;
+    max-width: 60vw;
+    margin-bottom: 12px;
+  }
+}
+
 .choose-btn:focus, .nav-links a:focus {
   outline: 2px solid #39ff14;
   outline-offset: 2px;
@@ -724,4 +773,34 @@ input, textarea, select, button, .btn-descargar, .btn-wsp {
 }
 #cerrarBtnPublicidad:hover {
   background-color: #f0f0f0;
+}
+
+
+@media (min-width: 700px) {
+  #lista-testimonios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  #lista-testimonios .tarjeta-testimonio {
+    flex: 1 1 320px;
+    max-width: 45%;
+    min-width: 260px;
+    margin: 0;
+  }
+}
+
+/* Una columna en móviles */
+@media (max-width: 699px) {
+  #lista-testimonios {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  #lista-testimonios .tarjeta-testimonio {
+    max-width: 100%;
+    width: 100%;
+  }
 }
