@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Testimonios - ShadowGuard</title>
+  <title>Testimonios - InterNeon VPN</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="header">
     <nav class="navbar" aria-label="Navegación principal">
-      <img src="images/logo.png" alt="Logo ShadowGuard" class="logo">
+  <img src="images/logo.png" alt="Logo InterNeon VPN" class="logo">
       <ul class="nav-links">
         <li><a href="index.html">Inicio</a></li>
         <li><a href="seguridad.html">Seguridad</a></li>
@@ -24,11 +24,11 @@
   </header>
 
   
-  <div id="form-container" class="form-neon" style="display:none;position:fixed;top:80px;left:0;right:0;z-index:10001;max-width:400px;margin:auto;" role="dialog" aria-modal="true" aria-labelledby="form-title">
-    <button id="btn-cerrar-form" aria-label="Cerrar formulario" type="button" style="position:absolute;top:10px;right:10px;background:none;border:none;font-size:1.5em;cursor:pointer;">&times;</button>
+  <div id="form-container" class="form-neon" role="dialog" aria-modal="true" aria-labelledby="form-title">
+    <button id="btn-cerrar-form" class="btn-close" aria-label="Cerrar formulario" type="button">&times;</button>
     
     <form id="form-registro" autocomplete="off" novalidate action="#">
-      <h2 id="form-title" style="margin-bottom:10px;">Registro</h2>
+  <h2 id="form-title">Registro</h2>
       <label for="nombre" class="label-neon">Nombre y Apellido</label>
       <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo" class="input-neon" autocomplete="name">
       <label for="correo" class="label-neon">Correo electrónico</label>
@@ -37,26 +37,26 @@
       <input type="text" id="usuario" name="usuario" required placeholder="Usuario" class="input-neon" autocomplete="username">
       <label for="password" class="label-neon">Contraseña</label>
       <input type="password" id="password" name="password" required placeholder="Contraseña" class="input-neon" autocomplete="new-password">
-      <button type="submit" class="btn-neon" style="width:100%;margin-top:10px;">Guardar</button>
+  <button type="submit" class="btn-neon">Guardar</button>
     </form>
     
-    <form id="form-testimonio" style="display:none;" novalidate action="#">
-      <h2 style="margin-bottom:10px;">Testimonio</h2>
+    <form id="form-testimonio" novalidate action="#">
+      <h2 id="form-testimonio-title">Testimonio</h2>
       <label for="mensaje-testimonio" class="label-neon">Testimonio</label>
-      <textarea id="mensaje-testimonio" name="mensaje-testimonio" required placeholder="Escribe tu testimonio..." class="input-neon" style="height:80px;"></textarea>
-      <button type="submit" class="btn-neon" style="width:100%;margin-top:10px;">Enviar</button>
+  <textarea id="mensaje-testimonio" name="mensaje-testimonio" required placeholder="Escribe tu testimonio..." class="input-neon"></textarea>
+  <button type="submit" class="btn-neon">Enviar</button>
     </form>
   </div>
 
-  <main style="padding: 40px 20px;">
+  <main>
     <h1 class="titulo-neon">Testimonios</h1>
-    <p class="subtitulo">Opiniones reales de usuarios satisfechos con ShadowGuard:</p>
+  <p class="subtitulo">Opiniones reales de usuarios satisfechos con InterNeon VPN:</p>
 
     <section class="testimonios-flex" aria-live="polite">
       <div id="lista-testimonios"></div>
     </section>
     
-    <div style="display:flex;justify-content:center;margin:40px 0 0 0;">
+    <div class="centered-action">
       <button id="btn-agregar-comentario" class="btn-neon" type="button" aria-label="Agregar comentario">Agregar comentario</button>
     </div>
   </main>
@@ -113,7 +113,7 @@
       }
     });
   </script>
-  <canvas id="cursor-canvas" style="position:fixed;top:0;left:0;pointer-events:none;z-index:10000;"></canvas>
+  <canvas id="cursor-canvas"></canvas>
   <script src="js/javascript.js"></script>
 </body>
 </html>

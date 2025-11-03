@@ -26,39 +26,52 @@ document.addEventListener("DOMContentLoaded", function() {
 // 4. Manejo de eventos
 document.querySelectorAll(".btn-descargar").forEach(btn => {
   btn.addEventListener("click", function(e) {
-    alert("¡Gracias por descargar la app ShadowGuard!");
+  alert("¡Gracias por descargar la app InterNeon VPN!");
   });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
   // Solo números en teléfono
-  document.getElementById('telefono').addEventListener('input', function (e) {
-    this.value = this.value.replace(/[^0-9]/g, '');
-  });
+  const telefonoEl = document.getElementById('telefono');
+  if (telefonoEl) {
+    telefonoEl.addEventListener('input', function (e) {
+      this.value = this.value.replace(/[^0-9]/g, '');
+    });
+  }
 
   // Validación y popup
-  document.getElementById('contacto-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const nombre = document.getElementById('nombre').value.trim();
-    const correo = document.getElementById('correo').value.trim();
-    const telefono = document.getElementById('telefono').value.trim();
-    const mensaje = document.getElementById('mensaje').value.trim();
-    const popup = document.getElementById('popup-mensaje');
-    const popupTexto = document.getElementById('popup-texto');
+  const contactoForm = document.getElementById('contacto-form');
+  if (contactoForm) {
+    contactoForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nombreEl = document.getElementById('nombre');
+      const correoEl = document.getElementById('correo');
+      const telefonoEl2 = document.getElementById('telefono');
+      const mensajeEl = document.getElementById('mensaje');
+      const popup = document.getElementById('popup-mensaje');
+      const popupTexto = document.getElementById('popup-texto');
 
-    if (nombre && correo && telefono && mensaje) {
-      popupTexto.textContent = "Mensaje Enviado";
-      popup.classList.remove('popup-error');
-      popup.classList.add('popup-success');
-      this.reset();
-    } else {
-      popupTexto.textContent = "Datos Incompletos!";
-      popup.classList.remove('popup-success');
-      popup.classList.add('popup-error');
-    }
-    popup.style.display = "flex";
-    setTimeout(() => { popup.style.display = "none"; }, 2200);
-  });
+      const nombre = nombreEl ? nombreEl.value.trim() : '';
+      const correo = correoEl ? correoEl.value.trim() : '';
+      const telefono = telefonoEl2 ? telefonoEl2.value.trim() : '';
+      const mensaje = mensajeEl ? mensajeEl.value.trim() : '';
+
+      if (popup && popupTexto) {
+        if (nombre && correo && telefono && mensaje) {
+          popupTexto.textContent = "Mensaje Enviado";
+          popup.classList.remove('popup-error');
+          popup.classList.add('popup-success');
+          this.reset();
+        } else {
+          popupTexto.textContent = "Datos Incompletos!";
+          popup.classList.remove('popup-success');
+          popup.classList.add('popup-error');
+        }
+        popup.style.display = "flex";
+        setTimeout(() => { popup.style.display = "none"; }, 2200);
+      }
+    });
+  }
 
   // Carrusel de imágenes
   const imagenes = [
@@ -81,6 +94,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const btnNext = document.getElementById('carrusel-next');
   const btnPause = document.getElementById('carrusel-pause');
 
+  // Only initialize carousel if required elements exist
+  const hasCarousel = img && label && btnPrev && btnNext && btnPause;
+
   function mostrarImagen(i) {
     indice = (i + imagenes.length) % imagenes.length;
     img.src = imagenes[indice];
@@ -102,26 +118,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 3500);
   }
 
-  btnPrev.addEventListener('click', () => {
-    anterior();
-    pausado = true;
-    btnPause.textContent = '▶️';
-  });
+  if (hasCarousel) {
+    btnPrev.addEventListener('click', () => {
+      anterior();
+      pausado = true;
+      btnPause.textContent = '▶️';
+    });
 
-  btnNext.addEventListener('click', () => {
-    siguiente();
-    pausado = true;
-    btnPause.textContent = '▶️';
-  });
+    btnNext.addEventListener('click', () => {
+      siguiente();
+      pausado = true;
+      btnPause.textContent = '▶️';
+    });
 
-  btnPause.addEventListener('click', () => {
-    pausado = !pausado;
-    btnPause.textContent = pausado ? '▶️' : '⏸️';
-    if (!pausado) autoPlay();
-  });
+    btnPause.addEventListener('click', () => {
+      pausado = !pausado;
+      btnPause.textContent = pausado ? '▶️' : '⏸️';
+      if (!pausado) autoPlay();
+    });
 
-  mostrarImagen(indice);
-  autoPlay();
+    mostrarImagen(indice);
+    autoPlay();
+  }
 });
 
 // Redirigir a contacto al hacer click en cualquier botón de elegir plan
@@ -139,11 +157,13 @@ document.querySelectorAll('.choose-btn').forEach(btn => {
     y: 0.5 * window.innerHeight,
   };
   const params = {
-    pointsNumber: 40,
+    // adaptive number of points for performance
+    pointsNumber: window.innerWidth < 800 ? 28 : 40,
     widthFactor: 0.3,
     mouseThreshold: 0.6,
     spring: 0.4,
     friction: 0.5,
+    idleTimeout: 900 // ms to consider idle and reduce updates
   };
   let points = [];
 
@@ -159,25 +179,39 @@ document.querySelectorAll('.choose-btn').forEach(btn => {
     }
   }
 
+  // throttle mousemove to 60fps max and update pointer
+  let lastMouseTime = 0;
   function updateMousePosition(e) {
+    const now = Date.now();
+    if (now - lastMouseTime < 16) return; // ~60fps
+    lastMouseTime = now;
     pointer.x = e.clientX;
     pointer.y = e.clientY;
     mouseMoved = true;
+    lastActive = now;
   }
 
   function setupCanvas() {
     const canvas = document.getElementById('cursor-canvas');
     if (!canvas) return;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // handle devicePixelRatio for sharp rendering
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.floor(window.innerWidth * dpr);
+    canvas.height = Math.floor(window.innerHeight * dpr);
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+    const ctx = canvas.getContext('2d');
+    if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     initPoints();
   }
 
+  let lastActive = Date.now();
   function update() {
     const canvas = document.getElementById('cursor-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // clear using CSS pixel size (ctx is transformed to devicePixelRatio)
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
     // Primer punto sigue al mouse
     points[0].vx += (pointer.x - points[0].x) * params.spring;
@@ -207,7 +241,14 @@ document.querySelectorAll('.choose-btn').forEach(btn => {
       ctx.stroke();
     }
 
-    requestAnimationFrame(update);
+    // if idle, reduce CPU by skipping frames occasionally
+    const now = Date.now();
+    if (now - lastActive > params.idleTimeout) {
+      // skip next frame to reduce work (but keep occasional updates)
+      setTimeout(() => { requestAnimationFrame(update); }, 120);
+    } else {
+      requestAnimationFrame(update);
+    }
   }
 
   window.addEventListener('mousemove', updateMousePosition);

@@ -33,15 +33,13 @@ function mostrarSaludo() {
     }
     if (nombre) {
         const saludo = document.getElementById('saludo-cibernetico');
-        saludo.innerHTML = `
-            <h1 style="color:#00ffe7; text-shadow:0 0 10px #00ffe7, 0 0 20px #0ff;">
-                &#60;Bienvenido, <span style="color:#ff00c8;">${nombre}</span>!&#62;
-            </h1>
-            <p style="font-size:1.2rem; color:#0ff;">
-                Sistema ShadowGuard activado para ti, <b>${nombre}</b>. ¡Prepárate para una experiencia cibernética!
-            </p>
-        `;
-        saludo.style.display = 'block';
+        if (saludo) {
+            saludo.innerHTML = `
+                <h1 class="saludo-title">&#60;Bienvenido, <span class="saludo-name">${nombre}</span>!&#62;</h1>
+                <p class="saludo-text">Sistema InterNeon VPN activado para ti, <b>${nombre}</b>. ¡Prepárate para una experiencia cibernética!</p>
+            `;
+            saludo.style.display = 'block';
+        }
     }
 }
 
@@ -62,6 +60,7 @@ window.onload = function() {
 // Función para mostrar los datos guardados
 function mostrarDatos() {
     const listado = document.getElementById('listadatos');
+    if (!listado) return;
     listado.innerHTML = '';
     datos.forEach(function(nombre, idx) {
         const div = document.createElement('div');
@@ -70,29 +69,36 @@ function mostrarDatos() {
         listado.appendChild(div);
     });
 }
+// Manejar el envío del formulario principal (si existe)
+const formEl = document.getElementById('formulario');
+if (formEl) {
+    formEl.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const nombreEl = document.getElementById('nombre');
+        const nombre = nombreEl ? nombreEl.value.trim() : '';
+        if (nombre === '') return;
+        datos.push(nombre);
+        guardarCookie('datos', JSON.stringify(datos));
+        mostrarDatos();
+        mostrarSaludo();
+        formEl.reset();
+    });
+}
 
-// Manejar el envío del formulario principal
-document.getElementById('formulario').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const nombre = document.getElementById('nombre').value.trim();
-    if (nombre === '') return;
-    datos.push(nombre);
-    guardarCookie('datos', JSON.stringify(datos));
-    mostrarDatos();
-    mostrarSaludo();
-    document.getElementById('formulario').reset();
-});
-
-// Manejar el envío desde la caja de testimonios
-document.getElementById('enviar-testimonio').addEventListener('click', function() {
-    const nombreTestimonio = document.getElementById('nombre-testimonio').value.trim();
-    const mensajeTestimonio = document.getElementById('mensaje-testimonio').value.trim();
-    if (nombreTestimonio === '' || mensajeTestimonio === '') return;
-    datos.push(nombreTestimonio);
-    guardarCookie('datos', JSON.stringify(datos));
-    mostrarDatos();
-    mostrarSaludo();
-    // Aquí puedes agregar lógica para mostrar el testimonio si lo deseas
-    document.getElementById('nombre-testimonio').value = '';
-    document.getElementById('mensaje-testimonio').value = '';
-});
+// Manejar el envío desde la caja de testimonios (si existe)
+const enviarBtn = document.getElementById('enviar-testimonio');
+if (enviarBtn) {
+    enviarBtn.addEventListener('click', function() {
+        const nombreTestimonioEl = document.getElementById('nombre-testimonio');
+        const mensajeTestimonioEl = document.getElementById('mensaje-testimonio');
+        const nombreTestimonio = nombreTestimonioEl ? nombreTestimonioEl.value.trim() : '';
+        const mensajeTestimonio = mensajeTestimonioEl ? mensajeTestimonioEl.value.trim() : '';
+        if (nombreTestimonio === '' || mensajeTestimonio === '') return;
+        datos.push(nombreTestimonio);
+        guardarCookie('datos', JSON.stringify(datos));
+        mostrarDatos();
+        mostrarSaludo();
+        if (nombreTestimonioEl) nombreTestimonioEl.value = '';
+        if (mensajeTestimonioEl) mensajeTestimonioEl.value = '';
+    });
+}

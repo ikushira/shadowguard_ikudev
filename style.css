@@ -16,7 +16,7 @@ a:hover, .nav-links a:hover {
   text-decoration: underline;
 }
 .header {
-  background: #10131a;
+  background: #000;
   color: #f1f1f1;
   padding: 10px 20px;
   display: flex;
@@ -79,7 +79,7 @@ a:hover, .nav-links a:hover {
 .nav-links a.active,
 .nav-links a:hover {
   color: #fff !important;
-  background: #101c10;
+  background: #000;
   box-shadow: 0 0 18px 6px #39ff14, 0 0 2px 1px #39ff14 inset;
   text-shadow: 0 0 2px #39ff14, 0 0 8px #39ff14, 0 0 16px #39ff14;
   outline: none;
@@ -137,8 +137,48 @@ a:hover, .nav-links a:hover {
 .hero {
   text-align: center;
   padding: 100px 20px;
-  background: radial-gradient(#0b0f12, #000);
+  /* sutil gradiente para dar profundidad sobre el fondo negro */
+  background: radial-gradient(circle at 10% 10%, #0b0f12 0%, #000 60%);
 }
+
+/* Modal / form container used in testimonios.html moved from inline styles */
+#form-container {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: 10001;
+  max-width: 400px;
+  margin: auto;
+}
+#form-container .btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #39ff14;
+}
+.centered-action { display:flex;justify-content:center;margin:40px 0 0 0; }
+.input-neon { height: 80px; }
+.btn-neon { width:100%; margin-top:10px; }
+
+/* Global main padding moved from inline styles */
+main { padding: 40px 20px; }
+
+/* formulario and popup defaults moved from inline attributes */
+.formulario-flex { margin-top: 40px; }
+#popup-mensaje { display: none; }
+
+.card-date { font-size: 12px; color: #aaa; display: block; margin-top: 6px; }
+
+.saludo-title { color: #00ffe7; text-shadow: 0 0 10px #00ffe7, 0 0 20px #0ff; margin: 0 0 6px 0; }
+.saludo-name { color: #ff00c8; }
+.saludo-text { font-size: 1.2rem; color: #0ff; margin: 0; }
+
 .titulo-neon {
   color: #39ff14 !important;
   font-size: 4rem;
@@ -151,7 +191,7 @@ a:hover, .nav-links a:hover {
 }
 .btn-descargar, .btn-wsp {
   background: #cf1111;
-  color: #181c24;
+  color: #000;
   border: none;
   border-radius: 8px;
   padding: 10px 24px;
@@ -163,7 +203,7 @@ a:hover, .nav-links a:hover {
   color: #fff;
 }
 .btn-enviar {
-  background: #181f1b;
+  background: #000;
   color: #39ff14;
   border: 1px solid #39ff14;
   border-radius: 6px;
@@ -176,7 +216,7 @@ a:hover, .nav-links a:hover {
 }
 .btn-enviar:hover {
   background: #39ff14;
-  color: #181f1b;
+  color: #000;
   text-shadow: none;
 }
 .sparkle-btn {
@@ -229,7 +269,7 @@ a:hover, .nav-links a:hover {
   align-items: center;
 }
 .tarjeta-contacto, .seccion-destacada {
-  background: #232a36;
+  background: #0f1113;
   color: #f1f1f1;
   border-radius: 12px;
   padding: 20px;
@@ -274,7 +314,7 @@ a:hover, .nav-links a:hover {
   justify-content: center;
 }
 .card-front, .card-back {
-  background: #181f1b !important;
+  background: #0f1113 !important;
   border-radius: 12px;
   box-shadow: 0 4px 16px #39ff1460;
   position: absolute;
@@ -325,7 +365,7 @@ a:hover, .nav-links a:hover {
   margin: 40px 0;
 }
 .formulario-container {
-  background: #181f1b;
+  background: #0f1113;
   border-radius: 12px;
   box-shadow: 0 4px 16px #39ff1460;
   padding: 32px 28px;
@@ -355,7 +395,7 @@ a:hover, .nav-links a:hover {
   margin-bottom: 12px;
   border-radius: 6px;
   border: 1px solid #39ff14;
-  background: #10131a;
+  background: #000;
   color: #39ff14;
   font-size: 1rem;
   box-sizing: border-box;
@@ -368,7 +408,7 @@ a:hover, .nav-links a:hover {
   box-shadow: 0 0 8px #39ff14;
 }
 .form-neon {
-  background: #191a1e;
+  background: #000;
   border-radius: 16px;
   box-shadow: 0 0 16px #0f0, 0 0 0px #000;
   padding: 28px 22px 18px 22px;
@@ -392,7 +432,7 @@ a:hover, .nav-links a:hover {
   width: 100%;
   margin-bottom: 10px;
   padding: 8px 10px;
-  background: #191a1e;
+  background: #000;
   border: 2px solid #39ff14;
   border-radius: 5px;
   color: #39ff14;
@@ -420,7 +460,7 @@ a:hover, .nav-links a:hover {
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #181f1b;
+  background: #000;
   color: #39ff14;
   border-radius: 12px;
   box-shadow: 0 4px 16px #39ff1460;
@@ -474,7 +514,7 @@ a:hover, .nav-links a:hover {
   margin-top: 40px;
 }
 .plan-card {
-  background: #181c24;
+  background: #0f1113;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 30px 25px;
@@ -496,7 +536,7 @@ a:hover, .nav-links a:hover {
 .plan-lista { list-style: none; padding: 0; margin-bottom: 20px;}
 .check-icon::before { content: "✔"; margin-right: 8px; font-weight: bold;}
 .choose-btn {
-  background: #181c24;
+  background: #000;
   border-radius: 5px;
   padding: 10px 25px;
   cursor: pointer;
@@ -507,14 +547,14 @@ a:hover, .nav-links a:hover {
 .plan-basic .choose-btn { color: #39ff14; border-color: #39ff14;}
 .plan-advanced .choose-btn { color: #1bbf72; border-color: #1bbf72;}
 .plan-business .choose-btn { color: #ff7e29; border-color: #ff7e29;}
-.choose-btn:hover { background: #23272f;}
+.choose-btn:hover { background: #000;}
 .planes-nota {
   text-align: center;
   margin-top: 40px;
   color: #888;
 }
 .footer {
-  background: #10131a;
+  background: #000;
   color: #aaa;
   text-align: center;
   padding: 15px 0;
@@ -532,10 +572,10 @@ body, h1, h2, h3, h4, h5, h6, p, a, li, span, label, input, button, .titulo-neon
   text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 40px #0f0;
 }
 .tarjeta-contacto, .seccion-destacada, .card-front, .card-back, .btn-descargar, .btn-wsp, .tarjeta-testimonio {
-  background: #181f1b !important;
+  background: #000 !important;
 }
 input, textarea, select, button, .btn-descargar, .btn-wsp {
-  background: #181f1b !important;
+  background: #000 !important;
   border: 1px solid #39ff14;
   color: #39ff14 !important;
   text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
@@ -706,15 +746,13 @@ input, textarea, select, button, .btn-descargar, .btn-wsp {
   outline: 2px solid #39ff14;
   outline-offset: 2px;
 }
-.cursor-canvas, #cursor-canvas {
+#cursor-canvas {
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 9999;
-  display: block;
-  background: transparent;
 }
 #saludo-cibernetico {
   text-align: center;

@@ -58,7 +58,7 @@ function mostrarTestimonios() {
     card.className = "card";
     let cardFront = document.createElement("div");
     cardFront.className = "card-front";
-    cardFront.innerHTML = `<strong>${t.nombre}</strong><br><span style="font-size:12px;color:#aaa;">${t.fecha || ""}</span>`;
+  cardFront.innerHTML = `<strong>${t.nombre}</strong><br><span class="card-date">${t.fecha || ""}</span>`;
     let cardBack = document.createElement("div");
     cardBack.className = "card-back";
     cardBack.innerHTML = `<span>${t.mensaje}</span>`;
