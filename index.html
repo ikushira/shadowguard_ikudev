@@ -146,6 +146,9 @@
       const btnNext = document.getElementById('carrusel-next');
       const btnPause = document.getElementById('carrusel-pause');
 
+      // Only initialize carousel if required elements exist
+      const hasCarousel = img && label && btnPrev && btnNext && btnPause;
+
       function mostrarImagen(i) {
         indice = (i + imagenes.length) % imagenes.length;
         img.src = imagenes[indice];
@@ -167,26 +170,28 @@
         }, 3500);
       }
 
-      btnPrev.addEventListener('click', () => {
-        anterior();
-        pausado = true;
-        btnPause.textContent = '▶️';
-      });
+      if (hasCarousel) {
+        btnPrev.addEventListener('click', () => {
+          anterior();
+          pausado = true;
+          btnPause.textContent = '▶️';
+        });
 
-      btnNext.addEventListener('click', () => {
-        siguiente();
-        pausado = true;
-        btnPause.textContent = '▶️';
-      });
+        btnNext.addEventListener('click', () => {
+          siguiente();
+          pausado = true;
+          btnPause.textContent = '▶️';
+        });
 
-      btnPause.addEventListener('click', () => {
-        pausado = !pausado;
-        btnPause.textContent = pausado ? '▶️' : '⏸️';
-        if (!pausado) autoPlay();
-      });
+        btnPause.addEventListener('click', () => {
+          pausado = !pausado;
+          btnPause.textContent = pausado ? '▶️' : '⏸️';
+          if (!pausado) autoPlay();
+        });
 
-      mostrarImagen(indice);
-      autoPlay();
+        mostrarImagen(indice);
+        autoPlay();
+      }
     </script>
   </main>
 
