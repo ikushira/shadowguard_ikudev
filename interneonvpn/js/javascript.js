@@ -73,73 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Carrusel de imágenes
-  const imagenes = [
-    'images/imagen1.jpg',
-    'images/imagen2.jpg',
-    'images/imagen3.jpg',
-    'images/imagen4.jpg',
-    'images/imagen5.jpg',
-    'images/imagen6.jpg',
-    'images/imagen7.jpg',
-    'images/imagen8.jpg'
-  ];
-  let indice = 0;
-  let intervalo = null;
-  let pausado = false;
-
-  const img = document.getElementById('carrusel-img');
-  const label = document.getElementById('carrusel-label');
-  const btnPrev = document.getElementById('carrusel-prev');
-  const btnNext = document.getElementById('carrusel-next');
-  const btnPause = document.getElementById('carrusel-pause');
-
-  // Only initialize carousel if required elements exist
-  const hasCarousel = img && label && btnPrev && btnNext && btnPause;
-
-  function mostrarImagen(i) {
-    indice = (i + imagenes.length) % imagenes.length;
-    img.src = imagenes[indice];
-    label.textContent = `Imagen ${indice + 1} de ${imagenes.length}`;
-  }
-
-  function siguiente() {
-    mostrarImagen(indice + 1);
-  }
-
-  function anterior() {
-    mostrarImagen(indice - 1);
-  }
-
-  function autoPlay() {
-    if (intervalo) clearInterval(intervalo);
-    intervalo = setInterval(() => {
-      if (!pausado) siguiente();
-    }, 3500);
-  }
-
-  if (hasCarousel) {
-    btnPrev.addEventListener('click', () => {
-      anterior();
-      pausado = true;
-      btnPause.textContent = '▶️';
-    });
-
-    btnNext.addEventListener('click', () => {
-      siguiente();
-      pausado = true;
-      btnPause.textContent = '▶️';
-    });
-
-    btnPause.addEventListener('click', () => {
-      pausado = !pausado;
-      btnPause.textContent = pausado ? '▶️' : '⏸️';
-      if (!pausado) autoPlay();
-    });
-
-    mostrarImagen(indice);
-    autoPlay();
-  }
+  // Nota: El código del carrusel se encuentra en cada página HTML que lo necesita
+  // para manejar correctamente las rutas relativas según su ubicación
 });
 
 // Redirigir a contacto al hacer click en cualquier botón de elegir plan
