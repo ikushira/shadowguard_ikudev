@@ -768,14 +768,36 @@ input, textarea, select, button, .btn-descargar, .btn-wsp {
 .saludo-titulo { font-size: 2.5rem; margin: 0;}
 .saludo-subtitulo { font-size: 2rem; margin-top: 0.5rem;}
 .main-contenido { padding: 40px 20px;}
-.carrusel { text-align: center; margin: 40px 0;}
+
+/* Carrusel - Estilos base corregidos */
+.carrusel { 
+  text-align: center; 
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
 .carrusel-img {
+  width: 100%;
   max-width: 90vw;
-  max-height: 320px;
+  height: auto;
+  min-height: 320px;
+  max-height: 500px;
   border-radius: 12px;
   box-shadow: 0 0 24px #39ff14;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  background: #000;
 }
-.carrusel-controles { margin: 12px 0;}
+
+.carrusel-controles { 
+  margin: 20px 0;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
 #overlay-publicidad {
   position: fixed;
   top: 0;
@@ -839,4 +861,319 @@ input, textarea, select, button, .btn-descargar, .btn-wsp {
     max-width: 100%;
     width: 100%;
   }
+}
+
+/* ========================================
+   OPTIMIZACIONES MOBILE-FIRST
+   Core Web Vitals y Performance Mobile
+   ======================================== */
+
+/* Optimización para móviles pequeños (menos de 480px) */
+@media (max-width: 480px) {
+  /* Reducir tamaño del hero para mejorar LCP */
+  .hero {
+    padding: 60px 15px 40px;
+  }
+  
+  /* Logo hero más pequeño para móviles */
+  .logo-hero {
+    max-width: 120px;
+    height: auto;
+  }
+  
+  /* Títulos optimizados para pantallas pequeñas */
+  .titulo-neon {
+    font-size: 2rem !important;
+    line-height: 1.2;
+    text-shadow: 0 0 3px #39ff14, 0 0 6px #39ff14, 0 0 12px #39ff14;
+  }
+  
+  h1.titulo-neon {
+    font-size: 1.8rem !important;
+    margin-bottom: 15px;
+  }
+  
+  .subtitulo {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
+  /* Botones más grandes para touch */
+  .btn-descargar, .btn-whatsapp {
+    padding: 14px 28px;
+    font-size: 1rem;
+    min-height: 48px;
+    display: inline-block;
+    margin: 10px auto;
+  }
+  
+  /* Navegación móvil optimizada */
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px 5px;
+  }
+  
+  .logo {
+    height: 40px;
+    margin-right: 0;
+    margin-bottom: 8px;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-links a {
+    font-size: 1rem;
+    padding: 10px 14px;
+    display: block;
+    width: 100%;
+  }
+  
+  /* Contenido principal */
+  .main-contenido {
+    padding: 20px 15px;
+  }
+  
+  /* Secciones destacadas */
+  .seccion-destacada {
+    padding: 20px 15px;
+    margin-bottom: 20px;
+  }
+  
+  .seccion-destacada h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  
+  .seccion-destacada p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .seccion-destacada ul {
+    padding-left: 20px;
+  }
+  
+  .seccion-destacada li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  /* Carrusel optimizado para móviles pequeños */
+  .carrusel {
+    padding: 0 10px;
+  }
+  
+  .carrusel-img {
+    max-width: 100%;
+    min-height: 200px;
+    max-height: 300px;
+    object-fit: contain;
+  }
+  
+  .carrusel-controles button {
+    padding: 10px 16px;
+    font-size: 1.1rem;
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  /* Saludo cibernético */
+  #saludo-cibernetico {
+    font-size: 1.4rem;
+    margin: 20px auto 15px;
+  }
+  
+  .saludo-titulo {
+    font-size: 1.6rem;
+  }
+  
+  .saludo-subtitulo {
+    font-size: 1.2rem;
+  }
+}
+
+/* Optimización para tablets y móviles medianos (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .hero {
+    padding: 80px 20px 50px;
+  }
+  
+  .logo-hero {
+    max-width: 160px;
+    height: auto;
+  }
+  
+  .titulo-neon {
+    font-size: 2.8rem !important;
+  }
+  
+  h1.titulo-neon {
+    font-size: 2.4rem !important;
+  }
+  
+  .subtitulo {
+    font-size: 1.1rem;
+  }
+  
+  .btn-descargar, .btn-whatsapp {
+    padding: 12px 26px;
+    min-height: 48px;
+  }
+  
+  .nav-links a {
+    font-size: 1.15rem;
+    padding: 9px 16px;
+  }
+  
+  .seccion-destacada h2 {
+    font-size: 1.8rem;
+  }
+  
+  .seccion-destacada p,
+  .seccion-destacada li {
+    font-size: 1rem;
+  }
+  
+  /* Carrusel optimizado para tablets */
+  .carrusel-img {
+    max-height: 400px;
+    min-height: 280px;
+  }
+}
+
+/* Optimizaciones generales para todos los móviles */
+@media (max-width: 768px) {
+  /* Prevenir layout shift */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Mejorar performance de imágenes */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Optimizar animaciones para móviles (reducir complejidad) */
+  .sparkle-btn {
+    animation: none; /* Desactivar animaciones complejas en móviles */
+  }
+  
+  /* Touch-friendly: espaciado entre elementos interactivos */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Reducir efectos de blur para mejorar performance */
+  @keyframes glitch-glow {
+    0%, 100% { 
+      filter: none; 
+      opacity: 0.9; 
+      transform: translate(0, 0);
+    }
+  }
+  
+  /* Footer optimizado */
+  .footer {
+    padding: 20px 15px;
+    font-size: 0.9rem;
+  }
+  
+  /* Canvas cursor effect: desactivar en móviles para mejorar performance */
+  #cursor-canvas {
+    display: none;
+  }
+}
+
+/* Optimización para desktop (mantener diseño original) */
+@media (min-width: 769px) {
+  /* Asegurar que el diseño desktop se mantiene sin cambios */
+  .hero {
+    padding: 100px 20px;
+  }
+  
+  .titulo-neon {
+    font-size: 4rem;
+  }
+  
+  .navbar {
+    flex-direction: row;
+  }
+  
+  .nav-links {
+    flex-direction: row;
+  }
+}
+
+/* Preload de fuentes críticas para mejorar LCP */
+@font-face {
+  font-family: 'Orbitron';
+  font-display: swap;
+}
+
+/* Mejora de contraste para accesibilidad en móviles */
+@media (max-width: 768px) and (prefers-contrast: high) {
+  .titulo-neon {
+    text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14;
+  }
+  
+  .nav-links a {
+    text-shadow: 0 0 4px #39ff14;
+  }
+}
+
+/* Estilos del footer */
+.footer {
+  text-align: center;
+  padding: 30px 20px;
+  background: #000;
+  border-top: 1px solid #222;
+}
+
+.footer p {
+  margin: 0;
+  color: #ccc;
+}
+
+.footer a {
+  color: #39ff14 !important;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #fff !important;
+  text-decoration: underline;
+}
+
+.footer .footer-secondary {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* Disclaimer legal */
+.disclaimer {
+  margin-top: 15px;
+  padding: 10px;
+  background: rgba(57, 255, 20, 0.05);
+  border-left: 3px solid #39ff14;
+  border-radius: 4px;
+}
+
+.disclaimer small {
+  color: #aaa;
+  font-size: 0.85rem;
+  line-height: 1.5;
 }

@@ -1,0 +1,21 @@
+# robots.txt para Interneon VPN
+# Permitir acceso completo a todos los motores de búsqueda
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.interneonvpn.com/sitemap.xml
+
+# Optimización para bots específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Evitar sobrecarga del servidor
+Crawl-delay: 1
