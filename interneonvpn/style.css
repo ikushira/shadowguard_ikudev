@@ -1177,3 +1177,151 @@ input, textarea, select, button, .btn-descargar, .btn-wsp {
   font-size: 0.85rem;
   line-height: 1.5;
 }
+
+/* ========== POLÍTICAS DE PRIVACIDAD ========== */
+.fecha-actualizacion {
+  font-size: 0.9rem;
+  color: #aaa;
+  font-style: italic;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.politicas-contenido {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 1.8;
+}
+
+.intro-politicas {
+  background: rgba(0, 255, 231, 0.05);
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #00ffe7;
+  margin-bottom: 40px;
+}
+
+.intro-politicas p {
+  margin: 0;
+  color: #e0e0e0;
+}
+
+.politica-seccion {
+  margin-bottom: 40px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 231, 0.1);
+  transition: all 0.3s ease;
+}
+
+.politica-seccion:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(0, 255, 231, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 231, 0.1);
+}
+
+.politica-seccion h2 {
+  color: #00ffe7;
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgba(57, 255, 20, 0.3);
+}
+
+.politica-seccion p {
+  margin-bottom: 15px;
+  color: #e0e0e0;
+  text-align: justify;
+}
+
+.lista-finalidades,
+.lista-legitimacion {
+  margin: 20px 0;
+  padding-left: 30px;
+  list-style-type: none;
+}
+
+.lista-finalidades li,
+.lista-legitimacion li {
+  margin-bottom: 12px;
+  color: #e0e0e0;
+  position: relative;
+  padding-left: 20px;
+}
+
+.lista-finalidades li:before,
+.lista-legitimacion li:before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #39ff14;
+  font-size: 1.2rem;
+}
+
+.advertencia-datos {
+  background: rgba(57, 255, 20, 0.05);
+  padding: 15px;
+  border-left: 3px solid #39ff14;
+  border-radius: 4px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.contacto-privacidad {
+  background: linear-gradient(135deg, rgba(0, 255, 231, 0.1), rgba(57, 255, 20, 0.1));
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 50px;
+  border: 1px solid rgba(0, 255, 231, 0.3);
+}
+
+.contacto-privacidad h3 {
+  color: #00ffe7;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+}
+
+.contacto-privacidad p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.contacto-privacidad a {
+  color: #39ff14 !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contacto-privacidad a:hover {
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+/* Responsive para políticas */
+@media (max-width: 768px) {
+  .politicas-contenido {
+    padding: 10px;
+  }
+  
+  .politica-seccion {
+    padding: 15px;
+  }
+  
+  .politica-seccion h2 {
+    font-size: 1.2rem;
+  }
+  
+  .lista-finalidades,
+  .lista-legitimacion {
+    padding-left: 20px;
+  }
+  
+  .contacto-privacidad {
+    padding: 20px;
+  }
+}
